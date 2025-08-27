@@ -2,7 +2,7 @@
     input (device-file "/dev/input/by-id/usb-Logitech_USB_Receiver-if01-event-kbd")
     output (uinput-sink "Teclado KMonad")
     fallthrough true
-    allow-cmd true
+    allow-cmd false
 )
 
 (defsrc
@@ -12,10 +12,10 @@
 )
 
 (defalias esctl (tap-hold 200 esc ctl))
-(defalias tapsuper (tap-hold 200 (cmd-button "niri msg action spawn -- fuzzel") lmet))
+(defalias tapsuper (tap-hold 200 (around lmet d) lmet))
 
 (deflayer default
     @esctl
 
-        @tapsuper
+        lmet
 )

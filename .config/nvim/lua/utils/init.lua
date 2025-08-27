@@ -4,8 +4,9 @@ M.colorscheme = "catppuccin"
 
 -- :h lspconfig-all
 M.lsp_servers = {
-	"lua_ls",
-	-- "pyright",
+    "lua_ls",
+    "clangd",
+    -- "pyright",
     -- "dockerls",
     -- "bashls",
     -- "jdtls",
@@ -15,7 +16,8 @@ M.lsp_servers = {
 M.ts_parsers = {
     "python",
     "haskell",
-    "java"
+    "java",
+    "rust"
 }
 
 return M

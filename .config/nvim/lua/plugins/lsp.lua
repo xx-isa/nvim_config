@@ -3,11 +3,8 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            {
-                "williamboman/mason-lspconfig.nvim",
-                dependencies = { "williamboman/mason.nvim" },
-            },
-            "nvimtools/none-ls.nvim",
+            "mason-org/mason-lspconfig.nvim",
+            "mason-org/mason.nvim"
         },
         config = function()
             local utils = require("utils")
@@ -20,28 +17,8 @@ return {
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            mason_lspconfig.setup_handlers({
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
-                ["lua_ls"] = function()
-                    lspconfig.lua_ls.setup({
-                        settings = {
-                            Lua = {
-                                diagnostics = { globals = { "vim" } },
-                            },
-                        },
-                        capabilities = capabilities,
-                        })
-                end,
-                ["bashls"] = function ()
-                    lspconfig.bashls.setup({
-                        filetypes = {"sh", "zsh"},
-                        capabilities = capabilities
-                    })
-                end
+            vim.lsp.config('*', {
+                capabilities = capabilities
             })
 
             local keymap = vim.keymap
