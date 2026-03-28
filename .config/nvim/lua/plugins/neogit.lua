@@ -4,5 +4,5 @@ return {
     dependencies = {
         "sindrets/diffview.nvim",
     },
-    config = true
+    config = true,
 }

@@ -1,3 +1,8 @@
+local toggle_hints = function ()
+    local enable = not vim.lsp.inlay_hint.is_enabled();
+    vim.lsp.inlay_hint.enable(enable)
+end
+
 return {
     {
         "neovim/nvim-lspconfig",
@@ -9,7 +14,6 @@ return {
         config = function()
             local utils = require("utils")
             local mason_lspconfig = require("mason-lspconfig")
-            local lspconfig = require("lspconfig")
             require("mason").setup()
             mason_lspconfig.setup({
                 ensure_installed = utils.lsp_servers,
@@ -36,9 +40,11 @@ return {
                     opts.desc = "Smart rename"
                     keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
                     opts.desc = "Show signature help"
-                    keymap.set("n", "<leader>h", vim.lsp.buf.signature_help, opts)
+                    keymap.set("n", "<leader>H", vim.lsp.buf.signature_help, opts)
                     opts.desc = "Format code"
                     keymap.set({ "n", "v" }, "<leader>fmt", vim.lsp.buf.format, opts)
+                    opts.desc = "Toggle Inlay Hints"
+                    keymap.set({"n"}, "<leader>h", toggle_hints, opts)
                 end,
             })
 

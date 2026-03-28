@@ -9,12 +9,12 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" ||\
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 export FZF_DEFAULT_OPTS=" \
@@ -85,9 +85,22 @@ eval "$(zoxide init zsh)"
 
 alias nivm="nvim"
 alias ngit='nvim -c "Neogit" -c "bd 1"'
+alias cat="bat"
+
+# alias -g -- -h="-h 2>&1 | bat --language=help --style=plain"
+alias -g -- --help="--help 2>&1 | bat --language=help --style=plain"
+function bathelp() {
+    "$@" | bat --language=help --style=plain
+}
+
+export MANPAGER='nvim +Man!'
 
 [ -f "/home/irmel/.ghcup/env" ] && . "/home/irmel/.ghcup/env" # ghcup-env
 
 if [ -n "${ZSH_DEBUGRC+1}" ]; then
     zprof
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

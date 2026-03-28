@@ -59,6 +59,8 @@ keymap.set("n", "<Tab>", [[ <Cmd>bnext<CR> ]], opts)
 opts.desc = "Previous buffer"
 keymap.set("n", "<S-Tab>", [[ <Cmd>bprevious<CR> ]], opts)
 
+vim.cmd([[ inoremap <C-H> <C-o>db ]])
+
 -- TOGGLE RELATIVE LINE NUMBER
 vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
     callback = function(ev)

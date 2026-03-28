@@ -19,6 +19,7 @@
     "modules-right": [
         "cpu",
         "memory",
+        "disk",
         "niri/language",
         "pulseaudio",
         "bluetooth",
@@ -142,5 +143,9 @@
             "suspend": "systemctl suspend",
             "hibernate": "systemctl hibernate"
         }
+    },
+    "disk": {
+            "unit": "GB",
+            "format": "{free} 󱛟"
     }
 }

@@ -1,4 +1,4 @@
-[manager]
+[mgr]
 show_symlink = false
 show_hidden = true
 
@@ -6,3 +6,8 @@ show_hidden = true
 # edit = [
 #     { run = 'nvim "$@"', block = true},
 # ]
+
+[plugin]
+prepend_previewers = [
+    { name = "*.md", run = "glow" },
+]

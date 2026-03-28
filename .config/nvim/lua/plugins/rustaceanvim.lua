@@ -1,6 +1,6 @@
 return {
     "mrcjkb/rustaceanvim",
-    enabled = false,
+    enabled = true,
     init = function()
         vim.g.rustaceanvim = {
             tools = {

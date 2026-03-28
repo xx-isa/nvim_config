@@ -4,8 +4,8 @@ M.colorscheme = "catppuccin"
 
 -- :h lspconfig-all
 M.lsp_servers = {
-    "lua_ls",
-    "clangd",
+    -- "lua_ls",
+    -- "clangd",
     -- "pyright",
     -- "dockerls",
     -- "bashls",

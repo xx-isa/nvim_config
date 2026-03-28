@@ -1,12 +1,26 @@
+---@module "lazy"
+
+---@type fzf-lua.Config
+local fzf_opts = {
+    files = {
+        follow = true,
+        -- path_shorten = 1,
+        git_icons = true,
+        formatter = "path.filename_first"
+    }
+}
+---@type LazyPlugin
+---@diagnostic disable:missing-fields
 return {
     "ibhagwan/fzf-lua",
-    event = "VeryLazy",
+    event = {"VeryLazy"},
     config = function()
         local fzf = require("fzf-lua")
-        fzf.setup({})
+        fzf.setup(fzf_opts)
 
         local keymap = vim.keymap
-        local opts = { noremap = true, silent = true }
+        ---@type vim.keymap.set.Opts
+        local opts = { noremap = true, silent = true}
 
         opts.desc = "Show files"
         keymap.set("n", "Ff", fzf.files, opts)

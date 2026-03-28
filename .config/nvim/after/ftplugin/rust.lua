@@ -14,9 +14,9 @@ keymap.set(
     opts
 )
 
-vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function ()
-        vim.cmd.RustLsp('hover', 'actions')
-    end
-})
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--     buffer = bufnr,
+--     callback = function ()
+--         vim.cmd.RustLsp('hover', 'actions')
+--     end
+-- })

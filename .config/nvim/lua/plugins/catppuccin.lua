@@ -1,5 +1,9 @@
 local opts = {
     flavour = "frappe",
+    background = {
+        light = "latte",
+        dark = "frappe",
+    },
     transparent_background = true,
     custom_highlights = function(colors)
         return {
